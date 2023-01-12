@@ -17,6 +17,60 @@ public class Car {
         this.country = country;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        if (brand == null ) this.brand = "default";
+        else this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        if (model == null ) this.model = "default";
+        else this.model = model;
+    }
+
+    public float getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(float engineVolume) {
+        if (engineVolume <= 0) this.engineVolume = 1.5f;
+        else this.engineVolume = engineVolume;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        if (color == null) this.color = "White";
+        else this.color = color;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        if (year <= 0) this.year = 2000;
+        else this.year = year;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        if (country == null ) this.country = "default";
+        else this.country = country;
+    }
+
     @Override
     public String toString() {
         return "марка: " + brand +
