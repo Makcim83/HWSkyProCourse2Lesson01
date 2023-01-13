@@ -9,12 +9,12 @@ public class Car {
     private String country;
 
     public Car(String brand, String model, float engineVolume, String color, int year, String country) {
-        this.brand = brand;
-        this.model = model;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.year = year;
-        this.country = country;
+        setBrand(brand);
+        setModel(model);
+        setEngineVolume(engineVolume);
+        setColor(color);
+        setYear(year);
+        setCountry(country);
     }
 
     public String getBrand() {
@@ -22,8 +22,7 @@ public class Car {
     }
 
     public void setBrand(String brand) {
-        if (brand == null ) this.brand = "default";
-        else this.brand = brand;
+        this.brand = checkNull(brand);
     }
 
     public String getModel() {
@@ -31,8 +30,7 @@ public class Car {
     }
 
     public void setModel(String model) {
-        if (model == null ) this.model = "default";
-        else this.model = model;
+        this.model = checkNull(model);
     }
 
     public float getEngineVolume() {
@@ -49,8 +47,7 @@ public class Car {
     }
 
     public void setColor(String color) {
-        if (color == null) this.color = "White";
-        else this.color = color;
+        this.color = checkNull(color);
     }
 
     public int getYear() {
@@ -67,8 +64,7 @@ public class Car {
     }
 
     public void setCountry(String country) {
-        if (country == null ) this.country = "default";
-        else this.country = country;
+        this.country = checkNull(country);
     }
 
     @Override
@@ -79,5 +75,13 @@ public class Car {
                 ", цвет кузова: " + color +
                 ", год выпуска: " + year +
                 ", страна-производитель: " + country;
+    }
+
+    private String checkNull(String s){
+        if (s == null) {
+            return "Default";
+        } else {
+            return s;
+        }
     }
 }
