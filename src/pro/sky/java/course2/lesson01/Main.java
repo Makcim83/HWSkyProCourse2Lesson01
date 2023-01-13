@@ -15,6 +15,15 @@ public class Main {
         System.out.println(kia.toString());
         System.out.println(hyundai.toString());
 
+        Car testCar = new Car("Test", "Prototype", 0.1f, "Blue", 2023, "Unknown");
+        System.out.println("\n"+testCar.toString());
 
+        testCar.setBrand(null);
+        testCar.setModel(null);
+        testCar.setEngineVolume(0);
+        testCar.setColor(null);
+        testCar.setYear(0);
+        testCar.setCountry(null);
+        System.out.println(testCar.toString());
     }
 }
