@@ -38,8 +38,12 @@ public class Car {
     }
 
     public void setEngineVolume(float engineVolume) {
-        if (engineVolume <= 0) this.engineVolume = 1.5f;
-        else this.engineVolume = engineVolume;
+        if (engineVolume <= 0) {
+            this.engineVolume = 1.5f;
+        }
+        else {
+            this.engineVolume = engineVolume;
+        }
     }
 
     public String getColor() {
@@ -55,8 +59,12 @@ public class Car {
     }
 
     public void setYear(int year) {
-        if (year <= 0) this.year = 2000;
-        else this.year = year;
+        if (year <= 0) {
+            this.year = 2000;
+        }
+        else {
+            this.year = year;
+        }
     }
 
     public String getCountry() {
