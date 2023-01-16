@@ -14,6 +14,7 @@ public class Car {
     private String numberRegistration;
     private final int numPassengerSeats;
     private boolean rubberTypeIsWinter;
+    private Key key;
 
     public Car(String brand,
                String model,
@@ -24,8 +25,8 @@ public class Car {
                String typeOfFrame,
                String numberRegistration,
                int numPassengerSeats,
-               String speedStepChanger)
-    {
+               String speedStepChanger,
+               Key key) {
         this.brand = validationString(brand);
         this.model = validationString(brand);
         this.year = checkYear(year);
@@ -133,5 +134,29 @@ public class Car {
 
     private String numberIsValid(String sn) {
         return (Pattern.matches("^[aАвВеЕкКм-оМ-Ор-уР-У]\\d{3}[aАвВеЕкКм-оМ-Ор-уР-У]{2}\\d{2,3}$", sn)) ? sn : "Номер не определен";
+    }
+
+    public void changeRubberType() {
+        this.setRubberTypeIsWinter(!this.rubberTypeIsWinter);
+        System.out.print("Произведена замена резины на " + this.brand + " - установлена резина для сезона ");
+        System.out.println(this.rubberTypeIsWinter == true ? "зима" : "лето");
+    }
+
+    public static class Key {
+        private final boolean remoteKeyStartAvailable;
+        private final boolean keyLessAccess;
+
+        public Key(boolean remoteKeyStartAvailable, boolean keyLessAccess) {
+            this.remoteKeyStartAvailable = remoteKeyStartAvailable;
+            this.keyLessAccess = keyLessAccess;
+        }
+
+        public boolean isRemoteKeyStartAvailable() {
+            return remoteKeyStartAvailable;
+        }
+
+        public boolean isKeyLessAccess() {
+            return keyLessAccess;
+        }
     }
 }
