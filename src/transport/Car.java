@@ -1,5 +1,6 @@
 package transport;
 
+import java.util.PrimitiveIterator;
 import java.util.regex.Pattern;
 
 public class Car {
@@ -15,6 +16,30 @@ public class Car {
     private final int numPassengerSeats;
     private boolean rubberTypeIsWinter;
     private Key key;
+
+    public static class Key {
+        private final boolean remoteKeyStartAvailable;
+        private final boolean keyLessAccess;
+
+        public Key(boolean remoteKeyStartAvailable, boolean keyLessAccess) {
+            this.remoteKeyStartAvailable = remoteKeyStartAvailable;
+            this.keyLessAccess = keyLessAccess;
+        }
+
+        public boolean isRemoteKeyStartAvailable() {
+            return remoteKeyStartAvailable;
+        }
+
+        public boolean isKeyLessAccess() {
+            return keyLessAccess;
+        }
+
+        @Override
+        public String toString() {
+            return ((remoteKeyStartAvailable ? "С удаленным запуском " : "Без удаленного запуска ") +
+                    (keyLessAccess ? ", с допуском без ключа " : ", нет функции допуска без ключа"));
+        }
+    }
 
     public Car(String brand,
                String model,
@@ -38,7 +63,7 @@ public class Car {
         setSpeedStepChanger(speedStepChanger);
         setRubberTypeIsWinter(rubberTypeIsWinter);
         setNumberRegistration(numberRegistration);
-
+        setKey(key);
     }
 
     public String getBrand() {
@@ -105,6 +130,13 @@ public class Car {
         this.numberRegistration = validationString(numberIsValid(number));
     }
 
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false, false);
+        }
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "марка: " + brand +
@@ -117,7 +149,8 @@ public class Car {
                 ", тип кузова: " + typeOfFrame +
                 ", регистрационный номер: " + numberRegistration +
                 ", количество мест: " + numPassengerSeats +
-                ", установленная резина: " + (rubberTypeIsWinter == true ? "Зимняя" : "Летняя");
+                ", установленная резина: " + (rubberTypeIsWinter == true ? "Зимняя" : "Летняя") +
+                ", " + key;
     }
 
     private String validationString(String s) {
@@ -140,23 +173,5 @@ public class Car {
         this.setRubberTypeIsWinter(!this.rubberTypeIsWinter);
         System.out.print("Произведена замена резины на " + this.brand + " - установлена резина для сезона ");
         System.out.println(this.rubberTypeIsWinter == true ? "зима" : "лето");
-    }
-
-    public static class Key {
-        private final boolean remoteKeyStartAvailable;
-        private final boolean keyLessAccess;
-
-        public Key(boolean remoteKeyStartAvailable, boolean keyLessAccess) {
-            this.remoteKeyStartAvailable = remoteKeyStartAvailable;
-            this.keyLessAccess = keyLessAccess;
-        }
-
-        public boolean isRemoteKeyStartAvailable() {
-            return remoteKeyStartAvailable;
-        }
-
-        public boolean isKeyLessAccess() {
-            return keyLessAccess;
-        }
     }
 }
